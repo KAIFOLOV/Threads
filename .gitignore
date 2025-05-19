@@ -1,0 +1,4 @@
+#Ignore files Qt Creator
+*.user
+*.user.*
+**.autosave
