@@ -12,8 +12,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
-foreach(_target lab1 lab2)
+foreach(_target lab1 lab2 lab3)
     add_executable(${_target} "${_target}.cpp")
+
+    if (_target STREQUAL "lab3")
+        target_sources(${_target} PRIVATE
+        Queue.h
+        )
+    endif()
 
     target_link_libraries(${_target}
         Qt${QT_VERSION_MAJOR}::Core
