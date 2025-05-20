@@ -23,7 +23,7 @@ private:
     std::shared_ptr<Node> head;
     std::shared_ptr<Node> tail;
     mutable std::mutex _mutex;
-    std::condition_variable _condVar;
+    std::condition_variable _condition;
     bool _isRunning = true;
 
 public:
@@ -48,13 +48,13 @@ public:
             tail->next = newNode;
             tail = newNode;
         }
-        _condVar.notify_one();
+        _condition.notify_one();
     }
 
     T pop()
     {
         std::unique_lock<std::mutex> lock(_mutex);
-        _condVar.wait(lock, [this]() {
+        _condition.wait(lock, [this]() {
             return head != nullptr || !_isRunning;
         });
         if (!_isRunning && !head) {
@@ -72,7 +72,7 @@ public:
     {
         std::lock_guard<std::mutex> lock(_mutex);
         _isRunning = false;
-        _condVar.notify_all();
+        _condition.notify_all();
     }
 
     T findMax() const
