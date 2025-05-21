@@ -1,0 +1,186 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Threads",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "lab1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab1-Debug-b54c30d05ba861685d0b.json",
+					"name" : "lab1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab1_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab1_autogen-Debug-b1e5a14517b2f988b809.json",
+					"name" : "lab1_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab1_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab1_autogen_timestamp_deps-Debug-01acb4da36829c2f4fbb.json",
+					"name" : "lab1_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab2-Debug-e7d3f511e2a290bc37d4.json",
+					"name" : "lab2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab2_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab2_autogen-Debug-d81d7c98de201e957992.json",
+					"name" : "lab2_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab2_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab2_autogen_timestamp_deps-Debug-8eb388f5bada324c2f34.json",
+					"name" : "lab2_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab3-Debug-a0a765b6e4e7d3b1da30.json",
+					"name" : "lab3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab3_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab3_autogen-Debug-e6b6692f585dc6b306a4.json",
+					"name" : "lab3_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab3_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab3_autogen_timestamp_deps-Debug-a85d6dc6168afa868093.json",
+					"name" : "lab3_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab4-Debug-bc2e36842324cebc18ae.json",
+					"name" : "lab4",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab4_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab4_autogen-Debug-96dc9da8787dff1653ea.json",
+					"name" : "lab4_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab4_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab4_autogen_timestamp_deps-Debug-57821f6e2666aab2aeda.json",
+					"name" : "lab4_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab5::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab5-Debug-8d66bc830d12fe8972f0.json",
+					"name" : "lab5",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab5_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab5_autogen-Debug-f40c647bed30c6d185c6.json",
+					"name" : "lab5_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab5_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab5_autogen_timestamp_deps-Debug-55e1113cdc05297558a6.json",
+					"name" : "lab5_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/programming/Threads/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
+		"source" : "E:/programming/Threads"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
