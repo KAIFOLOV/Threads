@@ -22,10 +22,8 @@ void countdown(const int n)
     }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
     std::thread t1(countdown, 10);
     std::thread t2(countdown, 20);
 
@@ -33,6 +31,4 @@ int main(int argc, char *argv[])
     t2.join();
 
     qInfo() << "All threads finished";
-
-    return a.exec();
 }

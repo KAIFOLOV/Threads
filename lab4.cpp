@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -23,10 +22,8 @@ void worker(const int id, Barrier &barrier)
     }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
     constexpr int threadCount = 5;
     Barrier barrier(threadCount);
 
@@ -41,6 +38,5 @@ int main(int argc, char *argv[])
     }
 
     std::cout << "All threads completed their work." << std::endl;
-
-    return a.exec();
+    return 0;
 }

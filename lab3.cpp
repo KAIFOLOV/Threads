@@ -1,8 +1,9 @@
-#include <QCoreApplication>
 #include <iostream>
 #include <thread>
 #include <vector>
 #include <cassert>
+#include <atomic>
+
 #include "Queue.h"
 
 void testPushPop()
@@ -92,13 +93,11 @@ void testMultithreading()
     std::cout << "  Total consumed elements: " << totalConsumed << std::endl;
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
     testPushPop();
     testMinMax();
     testMultithreading();
 
-    return a.exec();
+    return 0;
 }

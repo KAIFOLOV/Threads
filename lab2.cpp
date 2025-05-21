@@ -18,10 +18,8 @@ void fillArrayWithStep(std::vector<float> &array,
     }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
     constexpr int threadCount = 3;
     constexpr int arrayCount = 50;
 
@@ -37,5 +35,5 @@ int main(int argc, char *argv[])
     }
 
     qInfo() << array;
-    return a.exec();
+    return 0;
 }
