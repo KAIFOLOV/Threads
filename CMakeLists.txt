@@ -14,7 +14,7 @@ find_package(OpenMP REQUIRED)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
-foreach(_target lab1 lab2 lab3 lab4 lab5 lab6 TaskSheduler)
+foreach(_target lab1 lab2 lab3 lab4 lab5 lab6 TaskSheduler Integral)
     add_executable(${_target} "${_target}.cpp")
 
     if (_target STREQUAL "lab3")
