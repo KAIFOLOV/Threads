@@ -9,16 +9,20 @@
 
 std::mutex mutex;
 
-class TaskScheduler {
+class TaskScheduler
+{
 public:
-    explicit TaskScheduler(size_t numThreads) : _stop(false) {
+    explicit TaskScheduler(size_t numThreads) : _stop(false)
+    {
         for (size_t i = 0; i < numThreads; ++i) {
             _workers.emplace_back([this]() {
                 while (true) {
                     std::function<void()> task;
                     {
                         std::unique_lock<std::mutex> lock(_queueMutex);
-                        _condition.wait(lock, [this]() { return _stop || !_tasks.empty(); });
+                        _condition.wait(lock, [this]() {
+                            return _stop || !_tasks.empty();
+                        });
 
                         if (_stop) {
                             return;
@@ -33,30 +37,33 @@ public:
         }
     }
 
-    template <typename Func, typename... Args>
-    void addTask(Func&& func, Args&&... args) {
+    template<typename Func, typename... Args> void addTask(Func &&func, Args &&...args)
+    {
         {
             std::lock_guard<std::mutex> lock(_queueMutex);
-            _tasks.emplace([func = std::forward<Func>(func), args = std::make_tuple(std::forward<Args>(args)...)]() {
+            _tasks.emplace([func = std::forward<Func>(func),
+                            args = std::make_tuple(std::forward<Args>(args)...)]() {
                 std::apply(func, args);
             });
 
             {
                 std::lock_guard<std::mutex> lock(mutex);
-                std::cout << "Task added to queue. Function pointer: " << reinterpret_cast<void*>(func) << std::endl;
+                std::cout << "Task added to queue. Function pointer: "
+                          << reinterpret_cast<void *>(func) << std::endl;
             }
         }
         _condition.notify_one();
     }
 
-    ~TaskScheduler() {
+    ~TaskScheduler()
+    {
         {
             std::lock_guard<std::mutex> lock(_queueMutex);
             _stop = true;
         }
 
         _condition.notify_all();
-        for (auto& worker : _workers) {
+        for (auto &worker : _workers) {
             worker.join();
         }
     }
@@ -71,16 +78,19 @@ private:
     bool _stop;
 };
 
-void timeoutFunction(const int seconds, const int id) {
+void timeoutFunction(const int seconds, const int id)
+{
     std::this_thread::sleep_for(std::chrono::seconds(seconds));
 
     {
         std::lock_guard<std::mutex> lock(mutex);
-        std::cout << "Task id = " << id << " completed after " << seconds << " seconds." << std::endl;
+        std::cout << "Task id = " << id << " completed after " << seconds << " seconds."
+                  << std::endl;
     }
 }
 
-void job(const int seconds) {
+void job(const int seconds)
+{
     std::this_thread::sleep_for(std::chrono::seconds(seconds));
 
     {
@@ -89,7 +99,8 @@ void job(const int seconds) {
     }
 }
 
-int main() {
+int main()
+{
     constexpr int countThreads = 4;
     TaskScheduler scheduler(countThreads);
 

@@ -5,11 +5,13 @@
 #include <vector>
 #include <chrono>
 
-double function(double x) {
+double function(double x)
+{
     return std::sin(x);
 }
 
-double sequential_integral(const double a, const double b, const int n) {
+double sequentialIntegral(const double a, const double b, const int n)
+{
     double h = (b - a) / n;
     double integral = 0.0;
 
@@ -21,11 +23,12 @@ double sequential_integral(const double a, const double b, const int n) {
     return integral;
 }
 
-double parallel_omp_integral(const double a, const double b, const int n) {
+double parallelOmpIntegral(const double a, const double b, const int n)
+{
     double h = (b - a) / n;
     double integral = 0.0;
 
-#pragma omp parallel for reduction(+:integral)
+#pragma omp parallel for reduction(+ : integral)
     for (int i = 0; i < n; ++i) {
         double x_i = a + i * h;
         integral += function(x_i) * h;
@@ -34,7 +37,8 @@ double parallel_omp_integral(const double a, const double b, const int n) {
     return integral;
 }
 
-double parallel_thread_integral(const double a, const double b, const int n, const int countThreads) {
+double parallelThreadIntegral(const double a, const double b, const int n, const int countThreads)
+{
     double h = (b - a) / n;
     std::vector<double> partial_sums(countThreads, 0.0);
 
@@ -51,7 +55,7 @@ double parallel_thread_integral(const double a, const double b, const int n, con
         });
     }
 
-    for (auto& thread : threads) {
+    for (auto &thread : threads) {
         thread.join();
     }
 
@@ -63,8 +67,8 @@ double parallel_thread_integral(const double a, const double b, const int n, con
     return integral;
 }
 
-template <typename Func>
-double measure_time(Func func, const std::string& description) {
+template<typename Func> double measureTime(Func func, const std::string &description)
+{
     auto start = std::chrono::high_resolution_clock::now();
     double result = func();
     auto end = std::chrono::high_resolution_clock::now();
@@ -78,26 +82,30 @@ double measure_time(Func func, const std::string& description) {
     return result;
 }
 
-int main() {
+int main()
+{
     constexpr double leftBorder = -1000.0;
     constexpr double rightBorder = 1000.0;
     constexpr int countIntervals = 10000000;
     constexpr int numThreads = 228;
 
-    measure_time(
-        [&]() { return sequential_integral(leftBorder, rightBorder, countIntervals); },
-        "One thread"
-        );
+    measureTime(
+     [&]() {
+         return sequentialIntegral(leftBorder, rightBorder, countIntervals);
+     },
+     "One thread");
 
-    measure_time(
-        [&]() { return parallel_omp_integral(leftBorder, rightBorder, countIntervals); },
-        "OpenMP"
-        );
+    measureTime(
+     [&]() {
+         return parallelOmpIntegral(leftBorder, rightBorder, countIntervals);
+     },
+     "OpenMP");
 
-    measure_time(
-        [&]() { return parallel_thread_integral(leftBorder, rightBorder, countIntervals, numThreads); },
-        "Threads"
-        );
+    measureTime(
+     [&]() {
+         return parallelThreadIntegral(leftBorder, rightBorder, countIntervals, numThreads);
+     },
+     "Threads");
 
     return 0;
 }

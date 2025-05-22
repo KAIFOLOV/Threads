@@ -3,18 +3,20 @@
 #include <omp.h>
 #include <chrono>
 
-enum SheduleType {
+enum SheduleType
+{
     Static = 0,
     Dynamic,
     Guided,
     Auto
 };
 
-void multiplyMatrix(const std::vector<std::vector<double>>& A,
-                    const std::vector<std::vector<double>>& B,
-                    std::vector<std::vector<double>>& C,
+void multiplyMatrix(const std::vector<std::vector<double>> &A,
+                    const std::vector<std::vector<double>> &B,
+                    std::vector<std::vector<double>> &C,
                     const int numThreads,
-                    const SheduleType type) {
+                    const SheduleType type)
+{
     int n = A.size();
     int m = A[0].size();
     int p = B[0].size();
@@ -48,7 +50,8 @@ void multiplyMatrix(const std::vector<std::vector<double>>& A,
     }
 }
 
-int main() {
+int main()
+{
     constexpr int countRows = 500;
     constexpr int countColumns = 500;
 
@@ -56,10 +59,10 @@ int main() {
     std::vector<std::vector<double>> B(countRows, std::vector<double>(countColumns, 2.0));
     std::vector<std::vector<double>> C(countRows, std::vector<double>(countColumns, 0.0));
 
-    std::vector<SheduleType> schedules = {Static, Dynamic, Guided, Auto};
-    std::vector<int> threadCounts = {1, 2, 4, 8};
+    std::vector<SheduleType> schedules = { Static, Dynamic, Guided, Auto };
+    std::vector<int> threadCounts = { 1, 2, 4, 8 };
 
-    for (const auto& schedule : schedules) {
+    for (const auto &schedule : schedules) {
         std::cout << "Schedule type: " << schedule << std::endl;
         for (int threads : threadCounts) {
             auto startTime = std::chrono::high_resolution_clock::now();
@@ -69,7 +72,8 @@ int main() {
             auto endTime = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> elapsed = endTime - startTime;
 
-            std::cout << "  Threads: " << threads << ", Time: " << elapsed.count() << " seconds" << std::endl;
+            std::cout << "  Threads: " << threads << ", Time: " << elapsed.count() << " seconds"
+                      << std::endl;
         }
         std::cout << std::endl;
     }
